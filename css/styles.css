@@ -90,7 +90,6 @@ li {
   font-size: 14px;
   line-height: 1.14;
   letter-spacing: 0.02em;
-  color: var(--black-text);
   margin-right: 50px;
 }
 
@@ -103,9 +102,19 @@ li {
   margin-right: 0;
 }
 
+.nav-list .link {
+  color: var(--black-text);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .nav-list .link:hover,
 .nav-list .link:focus {
   color: var(--blue-main);
+}
+
+.nav-contacts a {
+  color: var(--main-text);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-contacts a:hover,
@@ -124,15 +133,10 @@ li {
   font-size: 14px;
   line-height: 1.2;
   letter-spacing: 0.02em;
-  color: var(--main-text);
   margin-right: 50px;
 }
 
-.nav-contacts a {
-  color: inherit;
-}
-
-nav a.header-active-page {
+nav .nav-list a.header-active-page {
   color: var(--blue-main);
   position: relative;
 }
@@ -163,6 +167,7 @@ nav a.header-active-page::after {
 .header .icon-smartphone {
   margin-right: 10px;
   fill: #757575;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* hero */
@@ -451,16 +456,18 @@ nav a.header-active-page::after {
 .team-social-media > a {
   padding: 12px;
   border-radius: 50%;
-  background: #fff;
+  background-color: #fff;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .team-social-media > a > svg {
   fill: #afb1b8;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .team-social-media > a:hover,
 .team-social-media > a:focus {
-  background: var(--blue-main);
+  background-color: var(--blue-main);
 }
 
 .team-social-media > a:hover > svg,
@@ -511,6 +518,7 @@ nav a.header-active-page::after {
 
 .customers-list .customers-icon {
   fill: #afb1b8;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .customers-list a:hover .customers-icon,
@@ -525,6 +533,8 @@ nav a.header-active-page::after {
 }
 
 .portfolio .portfolio-button {
+  position: relative;
+
   font-family: roboto, sans-sherif;
   font-weight: 500;
   font-size: 16px;
@@ -534,14 +544,34 @@ nav a.header-active-page::after {
   color: var(--black-text);
   background-color: var(--grey-background);
   padding: 6px 22px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .portfolio .portfolio-button:hover,
 .portfolio .portfolio-button:focus {
   background-color: var(--blue-main);
   color: var(--white-text);
+}
+
+.portfolio-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  border-radius: 4px;
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-button:focus::after,
+.portfolio-button:hover::after {
+  opacity: 1;
 }
 
 .portfolio-card .portfolio-card-title {
@@ -717,8 +747,9 @@ nav a.header-active-page::after {
 .footer-social-media > a {
   padding: 12px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.1);
   text-decoration: none;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-social-media > a:not(:last-child) {
@@ -731,7 +762,7 @@ nav a.header-active-page::after {
 
 .footer-social-media > a:hover,
 .footer-social-media > a:focus {
-  background: var(--blue-main);
+  background-color: var(--blue-main);
 }
 
 .footer-social > .footer-social-media {
